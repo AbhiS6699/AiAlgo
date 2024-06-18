@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Trading</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/1.9.3/countUp.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+    <style>
+        .hero-bg {
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            background-color: #C3FF93;
+            /* Light blue color on hover */
+        }
+
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="{% url 'home' %}" class="text-gray-800 text-2xl font-bold">ALGO EXPERT</a>
+            <div class="hidden sm:flex sm:items-center space-x-4">
+                <a href="{% url 'home' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Home</a>
+                <a href="{% url 'about' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">About</a>
+                <div class="relative group">
+                    <a href="#" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Services</a>
+                    <div
+                        class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                        <a href="{% url 'digital-marketing' %}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Digital Marketing</a>
+                        <a href="{% url 'web-development' %}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Web Development</a>
+                        <a href="{% url 'content-writing' %}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Content Writing</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Mobile App Development</a>
+                        <a href="{% url 'e-commerce' %}"
+                            class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Commerce Solutions</a>
+                        <a href="{% url 'asd' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Automated
+                            Software Development</a>
+                        <a href="{% url 'asp' %}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Algorithmic
+                            Strategy Programming</a>
+                    </div>
+                </div>
+                <a href="{% url 'payment' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Payment</a>
+                <a href="{% url 'pricing' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Pricing</a>
+                <a href="{% url 'disclaimer' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Disclaimer</a>
+                <a href="{% url 'contact' %}" class="text-gray-800 hover:text-gray-600 navbar-menu-item">Contact</a>
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded navbar-menu-item">Login</a>
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded navbar-menu-item">Demo Video</a>
+            </div>
+
+            <div class="sm:hidden flex items-center">
+                <button id="hamburger-btn" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="sm:hidden hidden px-6 py-3 space-y-2">
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Home</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">About</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Services</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Payment</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Pricing</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Disclaimer</a>
+            <a href="#" class="block text-gray-800 hover:text-gray-600">Contact</a>
+            <a href="#" class="block bg-blue-500 text-white px-4 py-2 rounded">Login</a>
+            <a href="#" class="block bg-blue-500 text-white px-4 py-2 rounded">Demo Video</a>
+        </div>
+    </header>
+
+    <style>
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
+
+        .navbar-menu-item {
+            margin-right: 20px;
+            /* Add gap between menu items */
+            font-size: 18px;
+            /* Make the menu items larger */
+            padding: 10px 15px;
+            /* Add padding for a better appearance */
+        }
+
+        .navbar-menu-item:hover {
+            text-decoration: underline;
+            /* Optional: underline on hover for better visibility */
+        }
+    </style>
+
+
+    <!-- Main Content -->
+    <main class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl text-gray-800 font-bold">Disclaimer</h1>
+        </div>
+    </main>
+
+    <!-- Disclaimer Section -->
+    <section id="disclaimer" class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center">Disclaimer</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    All subscription fees paid to AIalgoexpert is not refundable. We do not provide trading tips nor we
+                    are investment adviser. Our service is solely restricted to automated trading application
+                    development, deployment and maintenance. The information provided on this website or associated
+                    services are neither replacement of professional “investment adviser” nor it claims to be a
+                    substitute of “financial planning”. We strongly advise you to take consulting from SEBI recognized
+                    “investment adviser” before deciding what percentage of your asset can be exposed to equity market.
+                    Advice received via this web site or our services should not be relied upon for personal, medical,
+                    legal or financial decisions. All such information, software, products, services and related
+                    graphics are provided “AS IS” without warranty of any kind. In no event shall AIalgo be liable for
+                    any direct, indirect, punitive, incidental, special, consequential damages or any damages whatsoever
+                    including without limitation, damages for loss of use, data or profits, arising out of or in any way
+                    connected with the use or performance of this website, with the delay or inability to use this
+                    website, the provision of or failure to provide services, or for any information, software,
+                    products, services and related graphics obtained through this website, or otherwise arising out of
+                    the use of this website, whether based on contract, tort, strict liability or otherwise, even if
+                    AIalgo has been advised of the possibility of damages. If you are dissatisfied with any portion of
+                    this website, or with any of these terms of use, your sole and exclusive remedy is to discontinue
+                    using this website and associated services. Stock market is subject to market risk. Please read the
+                    associated document carefully or take help from SEBI recognized professionals to understand the
+                    finer points & details of the various financial products.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    All algorithms are based on backtested data but we do not provide any guarantee for their
+                    performance in future. The algorithm running in automated system is agreed with user prior
+                    deployment and we do not take any liability for any loss generated by the same. Past performance of
+                    advice/strategy/model does not indicate the future performance of any current or future
+                    strategy/model or advice by AIalgo Trades and actual returns may differ significantly from that
+                    depicted herein due to various factors including but not limited to impact costs, expense charged,
+                    timing of entry/exit, timing of additional flows/redemptions, individual client mandates, specific
+                    portfolio construction characteristics etc. There is no assurance or guarantee that the objectives
+                    of any strategy/model or advice provided by AIalgo Trades will be achieved. AIalgo Trades or any of
+                    its partner/s or principal officer/employees do not assure/give guarantee for any return on the
+                    investment in strategies/models/advice given to the Investor. The value of investment can go up/down
+                    depending on factors & forces affecting securities markets. AIalgo Trades or its associates are not
+                    liable or responsible for any loss or shortfall arising from operations and affected by the market
+                    condition. By visiting www.aialgoexpert.com you automatically indicate that you agree to Indemnity,
+                    Disclaimer & Disclosure Notice and General Content Disclaimer Notice and indemnify
+                    www.aialgoexpert.com, its associates and related parties of all claims howsoever resulting from the
+                    usage of the forum/site. All names or products mentioned are trademarks or registered trademarks of
+                    their respective owners.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap -mx-6">
+                <!-- Quick Links -->
+                <div class="w-full md:w-1/3 px-6 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="hover:text-gray-400">Home</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-gray-400">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-gray-400">Services</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-gray-400">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Information -->
+                <div class="w-full md:w-1/3 px-6 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                    <p class="mb-4"><i class="fas fa-map-marker-alt mr-2"></i> shree nagar indore MP</p>
+                    <p class="mb-4"><i class="fas fa-phone mr-2"></i> +91 9179888227</p>
+                    <p class="mb-4"><i class="fas fa-envelope mr-2"></i> info@aialgoexpert.com</p>
+                </div>
+                <!-- Social Media -->
+                <div class="w-full md:w-1/3 px-6">
+                    <h3 class="text-2xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-gray-400"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="hover:text-gray-400"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="hover:text-gray-400"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="hover:text-gray-400"><i class="fab fa-linkedin fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <p>&copy; 2024 AI Algo Expert. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        footer {
+            background-color: #2d3748;
+            /* Tailwind's gray-800 color */
+            color: #f7fafc;
+            /* Tailwind's white color */
+        }
+
+        footer a {
+            color: #f7fafc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #cbd5e0;
+            /* Tailwind's gray-400 color */
+        }
+
+        footer i {
+            margin-right: 8px;
+        }
+
+        footer .fab {
+            transition: color 0.3s;
+        }
+    </style>
+
+</body>
+
+</html>
